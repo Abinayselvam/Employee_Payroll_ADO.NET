@@ -35,3 +35,11 @@ double salary =
 
 Console.WriteLine(
         "Current Salary : " + salary);
+
+// UC4
+service.AddEmployee(new EmployeePayrollData
+{
+    Name = "John",
+    Salary = 50000,
+    StartDate = DateTime.Now
+});
