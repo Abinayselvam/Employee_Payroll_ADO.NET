@@ -19,11 +19,11 @@ namespace Employee_payroll_Application_ADO.NET
 
             //step 1 create connection
             using SqlConnection connection = GetConnection();
-            //step3 query for that operations
+            //step2 query for that operations
             string query = "SELECT * FROM employee_payroll";
-            //step4 command query to get the data from db
+            //step3 command query to get the data from db
             SqlCommand command = new SqlCommand(query,connection);
-            //step5 datareader store the data in this temporary table
+            //step4 datareader store the data in this temporary table
             SqlDataReader reader = command.ExecuteReader();
             //step6 iterate the data from the datareader
             while (reader.Read())
