@@ -11,3 +11,27 @@ foreach(EmployeePayrollData emp in empdata)
 {
     Console.WriteLine(emp);
 }
+
+bool updated =
+        service.UpdateEmployeeData(
+                "Terisa",
+                3000000.00);
+
+
+if (updated)
+{
+    Console.WriteLine(
+            "Salary Updated Successfully");
+}
+else
+{
+    Console.WriteLine(
+            "Employee Not Found");
+}
+
+double salary =
+        service.GetEmployeeSalary(
+                "Terisa");
+
+Console.WriteLine(
+        "Current Salary : " + salary);

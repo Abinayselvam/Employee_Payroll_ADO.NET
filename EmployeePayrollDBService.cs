@@ -34,6 +34,29 @@ namespace Employee_payroll_Application_ADO.NET
             }
             return emplist;
         }
+
+        public bool UpdateEmployeeData(String name,double salary)
+        {
+            using SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "UPDATE employee_payroll SET salary=@salary where name=@name ";
+            SqlCommand command = new SqlCommand(query,connection);
+            command.Parameters.AddWithValue("@salary", salary);
+            command.Parameters.AddWithValue ("name", name);
+            int rowAffected  = command.ExecuteNonQuery();
+            Console.WriteLine($"Rows Affected = {rowAffected}");
+            return rowAffected > 0;
+        }
+        public double GetEmployeeSalary(String name)
+        {
+            using SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT salary FROM employee_payroll WHERE name = @name";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@name", name);
+            object result = command.ExecuteScalar();    
+            return Convert.ToDouble(result);
+        }
         
 
     }
