@@ -43,3 +43,6 @@ service.AddEmployee(new EmployeePayrollData
     Salary = 50000,
     StartDate = DateTime.Now
 });
+
+// UC6
+service.GetSalaryAnalysis();

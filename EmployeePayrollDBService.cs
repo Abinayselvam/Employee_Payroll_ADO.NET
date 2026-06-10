@@ -72,7 +72,33 @@ namespace Employee_payroll_Application_ADO.NET
             return command.ExecuteNonQuery ();
 
         }
-        
+
+        //salary analysis
+        public void GetSalaryAnalysis()
+        {
+            using SqlConnection connection = GetConnection();
+
+            string query =
+                "SELECT gender, SUM(salary), AVG(salary), MIN(salary), MAX(salary), COUNT(*) " +
+                "FROM employee_payroll GROUP BY gender";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Console.WriteLine(
+                    $"Gender:{reader.GetString(0)} " +
+                    $"SUM:{reader.GetDecimal(1)} " +
+                    $"AVG:{reader.GetDecimal(2)} " +
+                    $"MIN:{reader.GetDecimal(3)} " +
+                    $"MAX:{reader.GetDecimal(4)} " +
+                    $"COUNT:{reader.GetInt32(5)}"
+                );
+            }
+        }
+
 
     }
 }
